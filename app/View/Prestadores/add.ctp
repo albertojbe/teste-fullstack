@@ -37,6 +37,23 @@
     </div>
 </div>
 
+<div class="form-group">
+    <label for="email">Email</label>
+    <div class="form-control single">
+        <div class="input-icon-wrapper">
+            <span class="input-icon"><span class="material-icons-outlined">mail</span></span>
+            <?= $this->Form->input('email', [
+                'label' => false,
+                'div' => false,
+                'class' => 'form-control with-icon',
+                'placeholder' => 'Email',
+                'required' => true,
+                'maxlength' => 255
+            ]); ?>
+        </div>
+    </div>
+</div>
+
 
 <div class="form-group">
     <div>
@@ -68,10 +85,14 @@
 
 <div class="form-group">
     <label for="telefone">Telefone</label>
-    <div class="form-control single">
-        <input type="text" maxlength="20" required name="data[Prestador][telefone]" class="form-control" id="telefone"
-            placeholder="(__) _____-____">
-    </div>
+    <?= $this->Form->input('telefone', [
+        'label' => false,
+        'div' => false,
+        'class' => 'form-control single',
+        'placeholder' => '(00) 00000-0000',
+        'required' => true,
+        'maxlength' => 20
+    ]); ?>
 </div>
 
 <div class="form-group">
@@ -88,7 +109,8 @@
         );
         ?>
     </div>
-    <button class="btn btn-primary"><span class="material-icons-outlined">add</span> Cadastrar serviço</button>
+    <button class="btn btn-primary open-modal"><span class="material-icons-outlined">add</span> Cadastrar
+        serviço</button>
 </div>
 
 <div class="mensagens">
@@ -99,6 +121,8 @@
     <?= $this->Html->link('Cancelar', ['action' => 'index'], ['class' => 'btn btn-secondary']); ?>
     <?= $this->Form->end(['label' => 'Salvar', 'class' => 'btn btn-primary']); ?>
 </div>
+
+<?= $this->element('create-service-modal'); ?>
 
 <script>
     // Mascara para o campo de telefone
@@ -115,7 +139,7 @@
             clearIfNotMatch: false
         };
 
-        $('#telefone').mask(maskBehavior, options);
+        $('input[name="data[Prestador][telefone]"]').mask(maskBehavior, options);
     });
 
     // Preview da foto ao adicionar arquivo
