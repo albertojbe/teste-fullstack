@@ -77,8 +77,8 @@
                 </td>
 
                 <td>
-                    <?= $this->Html->link('<i class="fa-solid fa-pen-to-square"></i>', ['action' => 'edit', $p['Prestador']['id']], ['class' => 'btn-icon', 'escape' => false]); ?>
-                    <?= $this->Form->postLink('<i class="fa-solid fa-trash"></i>', ['action' => 'delete', $p['Prestador']['id']], [
+                    <?= $this->Html->link('<span class="material-icons-outlined">border_color</span>', ['action' => 'edit', $p['Prestador']['id']], ['class' => 'btn-icon', 'escape' => false]); ?>
+                    <?= $this->Form->postLink('<span class="material-icons-outlined">delete</span>', ['action' => 'delete', $p['Prestador']['id']], [
                         'class' => 'btn-icon',
                         'escape' => false,
                         'confirm' => 'Tem certeza que deseja excluir este prestador?'
@@ -105,10 +105,10 @@
     </tfoot>
 </table>
 <script>
-    $(document).ready(function() {
-        $('#filtro-prestadores').on('keyup', function() {
+    $(document).ready(function () {
+        $('#filtro-prestadores').on('keyup', function () {
             var valorBusca = $(this).val().toLowerCase();
-            $('table tbody tr').filter(function() {
+            $('table tbody tr').filter(function () {
                 $(this).toggle($(this).text().toLowerCase().indexOf(valorBusca) > -1)
             });
         });
