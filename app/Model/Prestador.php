@@ -15,10 +15,6 @@ class Prestador extends AppModel
                 'rule' => '/^[A-Za-zÀ-ÿ\s]+$/u',
                 'message' => 'O nome só pode conter letras.'
             ],
-            'unique' => [
-                'rule' => 'isUnique',
-                'message' => 'Já existe um prestador com esse nome.'
-            ],
             'maxLength' => [
                 'rule' => ['maxLength', 100],
                 'message' => 'O nome pode ter no máximo 100 caracteres.'
