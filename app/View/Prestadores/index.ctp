@@ -104,6 +104,12 @@
         </tr>
     </tfoot>
 </table>
+
+<div class="messages">
+    <?= $this->Session->flash('success'); ?>
+    <?= $this->Session->flash('warning'); ?>
+</div>
+
 <script>
     $(document).ready(function () {
         $('#filtro-prestadores').on('keyup', function () {

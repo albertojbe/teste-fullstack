@@ -114,6 +114,7 @@
 </div>
 
 <div class="mensagens">
+    <?= $this->Session->flash('success') ?>
     <?= $this->Session->flash('error') ?>
 </div>
 

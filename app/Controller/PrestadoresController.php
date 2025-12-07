@@ -62,7 +62,7 @@ class PrestadoresController extends AppController
 
             if ($this->Prestador->save($this->request->data)) {
                 $this->Session->setFlash('Prestador atualizado.', 'default', ['class'=>'success-message'], 'success');
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'edit', $id]);
             }
 
             $this->Session->setFlash('Erro ao atualizar.', 'default', ['class'=>'warning-message'], 'error');
@@ -90,9 +90,9 @@ class PrestadoresController extends AppController
                     unlink($caminhoFoto);
                 }
             }
-            $this->Session->setFlash('Prestador removido.', 'default', ['class'=>'message success'], 'success');
+            $this->Session->setFlash('Prestador removido.', 'default', ['class'=>'success-message'], 'success');
         } else {
-            $this->Session->setFlash('Erro ao remover.', 'default', ['class'=>'message warning'], 'error');
+            $this->Session->setFlash('Erro ao remover.', 'default', ['class'=>'warning-message'], 'error');
         }
 
         return $this->redirect(['action' => 'index']);
