@@ -8,9 +8,9 @@ class ServicosController extends AppController {
         if ($this->request->is('post')) {
             $this->Servico->create();
             if ($this->Servico->save($this->request->data)) {
-                $this->Session->setFlash('Serviço cadastrado com sucesso.', 'default', [], 'success');
+                $this->Session->setFlash('Serviço cadastrado com sucesso.', 'default', ['class' => 'success-message'], 'success');
             }
-            $this->Session->setFlash('Erro ao cadastrar serviço. Verifique os dados.', 'default', [], 'error'); 
+            $this->Session->setFlash('Erro ao cadastrar serviço. Verifique os dados.', 'default', ['class' => 'error-message'], 'error'); 
         }
         return $this->redirect(['controller' => 'prestadores', 'action' => 'add']);
 
