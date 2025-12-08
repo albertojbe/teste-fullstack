@@ -142,6 +142,10 @@ class PrestadoresController extends AppController
                     throw new Exception('A planilha está vazia.');
                 }
 
+                if (count($rows[0]) != 5) {
+                    throw new Exception('Formato inválido. Verifique o cabeçalho da planilha.');
+                }
+
                 $importados = 0;
                 $erros = [];
 
