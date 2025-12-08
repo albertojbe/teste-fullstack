@@ -39,7 +39,7 @@ class PrestadoresController extends AppController
                         ['class' => 'error-message'],
                         'error'
                     );
-                    return;
+                    return $this->redirect($this->referer());
                 }
             } else {
                 unset($this->request->data['Prestador']['foto']);
@@ -59,14 +59,27 @@ class PrestadoresController extends AppController
 
     public function edit($id = null)
     {
+        $servicos = $this->Servico->find('list', ['fields' => ['id', 'nome']]);
+        $this->set('servicos', $servicos);
+        $this->set('id', $id);
+
         if (!$id || !$this->Prestador->exists($id)) {
             throw new NotFoundException("Prestador não encontrado.");
         }
 
         if ($this->request->is(['post', 'put'])) {
             if (!empty($this->request->data['Prestador']['foto']['name'])) {
-                $this->request->data['Prestador']['foto'] =
-                    $this->_uploadFoto($this->request->data['Prestador']['foto']);
+                try {
+                    $this->request->data['Prestador']['foto'] = $this->_uploadFoto($this->request->data['Prestador']['foto']);
+                } catch (Exception $e) {
+                    $this->Session->setFlash(
+                        'Erro ao enviar foto: ' . $e->getMessage(),
+                        'default',
+                        ['class' => 'error-message'],
+                        'error'
+                    );
+                    return $this->redirect($this->referer());
+                }
             } else {
                 unset($this->request->data['Prestador']['foto']);
             }
@@ -81,9 +94,6 @@ class PrestadoresController extends AppController
             $this->request->data = $this->Prestador->findById($id);
         }
 
-        $servicos = $this->Servico->find('list', ['fields' => ['id', 'nome']]);
-        $this->set('servicos', $servicos);
-        $this->set('id', $id);
     }
 
     public function delete($id = null)
