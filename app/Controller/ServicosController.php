@@ -12,7 +12,7 @@ class ServicosController extends AppController {
             }
             $this->Session->setFlash('Erro ao cadastrar serviço. Verifique os dados.', 'default', ['class' => 'error-message'], 'error'); 
         }
-        return $this->redirect(['controller' => 'prestadores', 'action' => 'add']);
-
+        
+        return $this->redirect($this->referer());
     }
 }
