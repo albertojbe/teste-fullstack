@@ -1,6 +1,6 @@
 <?= $this->Html->css('modal') ?>
 
-<div id="flash-<?php echo h($key) ?>" class="modal active">
+<div id="flash-<?php echo h($key) ?>" class="modal">
     <div class="modal-content">
         <div class="success-header">
             <span class="material-icons-outlined">task_alt</span>
@@ -45,6 +45,14 @@
 </style>
 
 <script>
+
+    $(document).ready(function() {
+        setTimeout(function() {
+            const modal = document.querySelector('.modal');
+            modal.classList.add('active');
+        }, 100);
+    });
+
     function closeModal() {
         const modal = document.querySelector('.modal');
         modal.classList.remove('active');
