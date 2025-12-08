@@ -33,15 +33,16 @@ class PrestadoresController extends AppController
             $this->Prestador->create();
 
             if ($this->Prestador->save($this->request->data)) {
-                $this->Session->setFlash('Prestador cadastrado com sucesso.', 'default', [], 'success');
+                $this->Session->setFlash('Prestador cadastrado com sucesso.', 'default', ['class'=>'success-message'], 'success');
                 return $this->redirect(['action' => 'index']);
             }
 
-            $this->Session->setFlash('Erro ao cadastrar. Verifique os dados.', 'default', [], 'error');
+            $this->Session->setFlash('Erro ao cadastrar. Verifique os dados.', 'default', ['class'=>'warning-message'], 'error');
         }
 
         $servicos = $this->Servico->find('list', ['fields' => ['id', 'nome']]);
         $this->set('servicos', $servicos);
+        $this->set('title', 'Adicionar Prestador');
     }
 
 
@@ -60,11 +61,11 @@ class PrestadoresController extends AppController
             }
 
             if ($this->Prestador->save($this->request->data)) {
-                $this->Session->setFlash('Prestador atualizado.', 'default', [], 'success');
-                return $this->redirect(['action' => 'index']);
+                $this->Session->setFlash('Prestador atualizado.', 'default', ['class'=>'success-message'], 'success');
+                return $this->redirect(['action' => 'edit', $id]);
             }
 
-            $this->Session->setFlash('Erro ao atualizar.', 'default', [], 'error');
+            $this->Session->setFlash('Erro ao atualizar.', 'default', ['class'=>'warning-message'], 'error');
         } else {
             $this->request->data = $this->Prestador->findById($id);
         }
@@ -89,9 +90,9 @@ class PrestadoresController extends AppController
                     unlink($caminhoFoto);
                 }
             }
-            $this->Session->setFlash('Prestador removido.', 'default', [], 'success');
+            $this->Session->setFlash('Prestador removido.', 'default', ['class'=>'success-message'], 'success');
         } else {
-            $this->Session->setFlash('Erro ao remover.', 'default', [], 'error');
+            $this->Session->setFlash('Erro ao remover.', 'default', ['class'=>'warning-message'], 'error');
         }
 
         return $this->redirect(['action' => 'index']);
