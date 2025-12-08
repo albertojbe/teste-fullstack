@@ -4,7 +4,8 @@
     "type": "project",
     "require": {
         "cakephp/cakephp": "dev-master as 2.10.24",
-        "robmorgan/phinx": "^0.16.10"
+        "robmorgan/phinx": "^0.16.10",
+        "phpoffice/phpspreadsheet": "^1.29"
     },
     "repositories": [
         {
