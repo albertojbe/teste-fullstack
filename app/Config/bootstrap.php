@@ -14,7 +14,7 @@
  */
 
 
-require APP . DS . 'Vendor' . DS . 'autoload.php';
+require DS . 'var' . DS . 'www' . DS . 'vendor' . DS . 'autoload.php';
 
 
 // Setup a 'default' cache configuration for use in the application.

@@ -16,12 +16,16 @@ RUN apt-get update \
     && docker-php-ext-install zip \
     && docker-php-ext-install pdo pdo_mysql mysqli
 
+RUN curl -sS https://getcomposer.org/installer \
+    | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Copiando o arquivo de configuração do Apache
 COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
 
 # Ativando mod_rewrite do Apache
 RUN a2enmod rewrite
+
+WORKDIR /var/www/
 
 # Reiniciando o Apache
 RUN service apache2 restart
