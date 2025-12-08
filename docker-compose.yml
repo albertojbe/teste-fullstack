@@ -4,9 +4,9 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./:/var/www
+      - ./app:/var/www/app
     command: >
-      bash -c " chown -R www-data:www-data /var/www/app/tmp && chmod -R 775 /var/www/app/tmp && apache2-foreground "
+      bash -c " chown -R www-data:www-data /var/www/app/webroot/img && chown -R www-data:www-data /var/www/app/tmp && chmod -R 775 /var/www/app/tmp && apache2-foreground "
   db:
     image: mysql:latest
     environment:

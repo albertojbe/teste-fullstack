@@ -47,7 +47,10 @@ Thumbs.db
 # ==============================
 # Arquivos de build / dependências externas
 # ==============================
+Vendor/
 vendor/
+app/Vendor/
+app/vendor/
 node_modules/
 bower_components/
 
@@ -83,4 +86,5 @@ composer.phar
 # Uploads (se houver)
 # ==============================
 app/webroot/files/*
+app/webroot/img/*
 !app/webroot/files/.gitkeep
