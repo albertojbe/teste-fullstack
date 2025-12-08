@@ -78,7 +78,9 @@
         <?= $this->Form->input('foto', [
             'type' => 'file',
             'label' => false,
-            'div' => false
+            'div' => false,
+            'accept' => 'image/*',
+            'id' => 'PrestadorFoto'
         ]); ?>
     </div>
 </div>
