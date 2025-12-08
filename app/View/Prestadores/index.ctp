@@ -4,6 +4,11 @@
         <div class="subtitle">Veja sua lista de prestadores de serviço</div>
     </div>
     <div class="actions">
+        <?= $this->Html->link(
+            '<span class="material-icons-outlined">category</span> Ver Serviços',
+            ['controller' => 'Servicos', 'action' => 'index'],
+            ['class' => 'btn btn-secondary', 'escape' => false]
+        ); ?>
         <button class="btn btn-secondary open-modal"><span class="material-icons-outlined">file_upload</span> Importar
         </button>
         <?= $this->Html->link(
