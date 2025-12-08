@@ -201,12 +201,12 @@ class PrestadoresController extends AppController
                 // Commit ou rollback
                 if (empty($erros)) {
                     $this->dataSource->commit();
-                    $this->Session->setFlash(
-                        "{$importados} prestador(es) importado(s) com sucesso!",
-                        'default',
-                        ['class' => 'success-message'],
-                        'success'
-                    );
+                    $this->Flash->modalSuccess('Lista enviada com sucesso!', array(
+                        'key' => 'import-success',
+                        'params' => array(
+                            'detalhes' => 'Confira seus servidores na tabela',
+                        )
+                    ));
                 } else {
                     $this->dataSource->rollback();
                     $mensagemErro = "Importação cancelada. Erros encontrados:<br>" . implode('<br>', $erros);

@@ -106,8 +106,10 @@
 </table>
 
 <div class="messages">
+    <?= $this->Flash->render('import-success'); ?>
     <?= $this->Session->flash('success'); ?>
     <?= $this->Session->flash('warning'); ?>
+    <?= $this->Session->flash('error'); ?>
 </div>
 
 <?= $this->element('importar-prestadores-modal'); ?>
