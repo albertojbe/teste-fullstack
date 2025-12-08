@@ -4,7 +4,7 @@
         <div class="subtitle">Veja sua lista de prestadores de serviço</div>
     </div>
     <div class="actions">
-        <a href="add" class="btn btn-secondary"><span class="material-icons-outlined">file_upload</span> Importar </a>
+        <button class="btn btn-secondary open-modal"><span class="material-icons-outlined">file_upload</span> Importar </button>
         <?= $this->Html->link(
             '<span class="material-icons-outlined">add</span> Adicionar Prestador',
             ['action' => 'add'],
@@ -109,6 +109,8 @@
     <?= $this->Session->flash('success'); ?>
     <?= $this->Session->flash('warning'); ?>
 </div>
+
+<?= $this->element('importar-prestadores-modal'); ?>
 
 <script>
     $(document).ready(function () {
