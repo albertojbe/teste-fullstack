@@ -9,17 +9,24 @@ Esse sistema tem como objetivo oferecer de forma simples o gerenciamento de pres
   - [Requisitos](#requisitos)
   - [Processo](#processo)
   - [Configurações](#configurações)
-  - [Outras Configurações Possíveis](#outras-configurações-possíveis)
+    - [Configuração do Banco de Dados](#configuração-do-banco-de-dados)
+    - [Outras Configurações Possíveis](#outras-configurações-possíveis)
 - [Funcionalidades](#funcionalidades)
-  - [Listagem de Prestadores](#listagem-de-prestadores)
-  - [Cadastro de Prestadores](#cadastro-de-prestadores)
-  - [Edição de Prestadores](#edição-de-prestadores)
-  - [Exclusão de Prestadores](#exclusão-de-prestadores)
-  - [Importação via Planilha](#importação-via-planilha)
-  - [Estrutura da Planilha](#estrutura-da-planilha)
-  - [Validações na Importação](#validações-na-importação)
-  - [Cadastro de Serviços](#cadastro-de-serviços)
-  - [Seleção Múltipla de Serviços](#seleção-múltipla-de-serviços)
+  - [Gestão de Prestadores](#gestão-de-prestadores)
+    - [Listagem de Prestadores](#listagem-de-prestadores)
+    - [Cadastro de Prestadores](#cadastro-de-prestadores)
+    - [Edição de Prestadores](#edição-de-prestadores)
+    - [Exclusão de Prestadores](#exclusão-de-prestadores)
+  - [Importação em Massa](#importação-em-massa)
+    - [Importação via Planilha](#importação-via-planilha)
+    - [Estrutura da Planilha](#estrutura-da-planilha)
+    - [Validações na Importação](#validações-na-importação)
+  - [Gestão de Serviços](#gestão-de-serviços)
+    - [Listagem de Serviços](#listagem-de-serviços)
+    - [Cadastro de Serviços](#cadastro-de-serviços)
+    - [Seleção Múltipla de Serviços](#seleção-múltipla-de-serviços)
+    - [Gerenciamento de Serviços](#gerenciamento-de-serviços)
+  - [Interface e Usabilidade](#interface-e-usabilidade)
 - [Notas](#notas)
   - [Sobre o fork do CakePHP 2](#sobre-o-fork-do-cakephp-2)
   - [Sobre o Phinx](#sobre-o-phinx)
@@ -148,7 +155,7 @@ ports:
 
 ### Listagem de Prestadores
 - Visualização em tabela com informações organizadas
-- Paginação automática (5 registros por página)
+- Paginação automática (6 registros por página)
 - Exibição de foto de perfil, nome completo, email e telefone
 - Visualização dos serviços associados a cada prestador
 - Sistema de busca e filtros
@@ -213,15 +220,6 @@ A planilha deve conter as seguintes colunas na ordem:
 - Sistema de rollback em caso de erro
 - Relatório detalhado de erros por linha
 
-### Cadastro de Serviços
-- Modal rápido para cadastro durante registro de prestadores
-- Campos:
-  - Nome do serviço
-  - Descrição detalhada
-  - Valor (com formatação de moeda BRL)
-- Validações automáticas
-- Cadastro sem sair do formulário principal
-
 ### Seleção Múltipla de Serviços
 - Interface customizada com:
   - Dropdown estilizado
@@ -230,6 +228,42 @@ A planilha deve conter as seguintes colunas na ordem:
   - Contador de seleções
   - Indicadores visuais de itens selecionados
 - Permite associar múltiplos serviços simultaneamente
+
+### Listagem de Serviços
+- Visualização em tabela com informações organizadas
+- Paginação automática (6 registros por página)
+- Exibição do nome do serviço com descrição resumida
+- Valor formatado em moeda BRL (R$)
+- Visualização dos prestadores associados através de avatares
+- Avatares com tooltip mostrando nome completo ao passar o mouse
+- Contador de prestadores adicionais (quando houver mais de 5)
+- Sistema de busca e filtros em tempo real
+- Botão exclusivo para remover serviços com confirmação
+
+### Cadastro de Serviços
+- Modal rápido e intuitivo para cadastro
+- Campos obrigatórios:
+  - Nome do serviço (único e validado)
+  - Descrição detalhada (textarea)
+  - Valor (com formatação automática de moeda BRL, sem prefixo R$)
+- Validações automáticas de dados
+- Integração com formulários de prestadores
+- Cadastro direto sem deixar o contexto atual
+- Mensagens de sucesso e erro em tempo real
+
+### Gerenciamento de Serviços
+- Exclusão de serviços com confirmação de segurança
+- Desassociação automática de prestadores vinculados
+- Relacionamento bidirecional com prestadores
+- Integridade referencial mantida pelo banco de dados
+- Feedback visual imediato após operações
+
+### Interface e Usabilidade
+- Design consistente em toda a aplicação
+- Componentes reutilizáveis (avatares, modais, inputs)
+- Busca dinâmica filtrando resultados em tempo real
+- Estado vazio personalizado quando não houver serviços
+- Indicadores visuais de quantidade e relações
 
 ## Notas
 
