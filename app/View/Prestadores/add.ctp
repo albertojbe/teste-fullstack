@@ -72,7 +72,7 @@
             <div>
                 <span style="font-weight: bold; color: var(--text-primary);">Clique aqui para enviar</span> ou arraste e
                 solte
-                <p>SVG, PNG, JPG ou GIF (máx. 800x400px)</p>
+                <p>SVG, PNG, JPG ou GIF (máx. 1200x800px)</p>
             </div>
         </label>
         <?= $this->Form->input('foto', [

@@ -25,10 +25,22 @@ class PrestadoresController extends AppController
 
     public function add()
     {
+        $servicos = $this->Servico->find('list', ['fields' => ['id', 'nome']]);
+        $this->set('servicos', $servicos);
+
         if ($this->request->is('post')) {
             if (!empty($this->request->data['Prestador']['foto']['name'])) {
-                $this->request->data['Prestador']['foto'] =
-                    $this->_uploadFoto($this->request->data['Prestador']['foto']);
+                try {
+                    $this->request->data['Prestador']['foto'] = $this->_uploadFoto($this->request->data['Prestador']['foto']);
+                } catch (Exception $e) {
+                    $this->Session->setFlash(
+                        'Erro ao enviar foto: ' . $e->getMessage(),
+                        'default',
+                        ['class' => 'error-message'],
+                        'error'
+                    );
+                    return;
+                }
             } else {
                 unset($this->request->data['Prestador']['foto']);
             }
@@ -42,10 +54,6 @@ class PrestadoresController extends AppController
 
             $this->Session->setFlash('Erro ao cadastrar. Verifique os dados.', 'default', ['class' => 'warning-message'], 'error');
         }
-
-        $servicos = $this->Servico->find('list', ['fields' => ['id', 'nome']]);
-        $this->set('servicos', $servicos);
-        $this->set('title', 'Adicionar Prestador');
     }
 
 
@@ -219,25 +227,31 @@ class PrestadoresController extends AppController
 
     private function _uploadFoto($foto)
     {
-        $uploadDir = WWW_ROOT . 'img' . DS . 'perfil' . DS;
+        $RESOLUCAO_MAXIMA = [1200, 800];
+        $UPLOAD_DIR = WWW_ROOT . 'img' . DS . 'perfil' . DS;
+        $EXTENSOES_PERMITIDAS = ['jpg', 'jpeg', 'png', 'gif'];
 
-        if (!is_dir($uploadDir)) {
-            mkdir($uploadDir, 0755, true);
+        if (!is_dir($UPLOAD_DIR)) {
+            mkdir($UPLOAD_DIR, 0755, true);
         }
 
-        if (!is_writable($uploadDir)) {
+        if (!is_writable($UPLOAD_DIR)) {
             throw new Exception("Diretório sem permissão de escrita.");
         }
 
         $extensao = pathinfo($foto['name'], PATHINFO_EXTENSION);
-        $extensoesPermitidas = ['jpg', 'jpeg', 'png', 'gif'];
+        $resolucao = getimagesize($foto['tmp_name']);
 
-        if (!in_array(strtolower($extensao), $extensoesPermitidas)) {
+        if (!in_array(strtolower($extensao), $EXTENSOES_PERMITIDAS)) {
             throw new Exception("Tipo de arquivo não permitido.");
         }
 
+        if ($resolucao[0] > $RESOLUCAO_MAXIMA[0] || $resolucao[1] > $RESOLUCAO_MAXIMA[1]) {
+            throw new Exception("Resolução máxima permitida é " . $RESOLUCAO_MAXIMA[0] . "x" . $RESOLUCAO_MAXIMA[1] . " pixels.");
+        }
+
         $nome = time() . '_' . md5(uniqid()) . '.' . $extensao;
-        $destino = $uploadDir . $nome;
+        $destino = $UPLOAD_DIR . $nome;
 
         if (!move_uploaded_file($foto['tmp_name'], $destino)) {
             throw new Exception("Erro ao fazer upload da foto.");
