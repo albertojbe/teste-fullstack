@@ -4,7 +4,8 @@
         <div class="subtitle">Veja sua lista de prestadores de serviço</div>
     </div>
     <div class="actions">
-        <button class="btn btn-secondary open-modal"><span class="material-icons-outlined">file_upload</span> Importar </button>
+        <button class="btn btn-secondary open-modal"><span class="material-icons-outlined">file_upload</span> Importar
+        </button>
         <?= $this->Html->link(
             '<span class="material-icons-outlined">add</span> Adicionar Prestador',
             ['action' => 'add'],
@@ -36,9 +37,9 @@
                 <td>
                     <div class="media">
                         <?php if (!empty($p['Prestador']['foto'])): ?>
-                            <?= $this->Html->image(
-                                'perfil/' . h($p['Prestador']['foto']),
-                                ['class' => 'avatar', 'alt' => h($p['Prestador']['nome'])]
+                            <?= $this->element(
+                                'avatar',
+                                ['foto' => h($p['Prestador']['foto']), 'nome' => h($p['Prestador']['nome']), 'sobrenome' => h($p['Prestador']['sobrenome'])]
                             ); ?>
                         <?php else: ?>
                             <span class="avatar avatar-placeholder">?</span>
