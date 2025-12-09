@@ -62,7 +62,7 @@
             : $this->Html->url('https://www.shutterstock.com/image-vector/avatar-gender-neutral-silhouette-vector-600nw-2470054311.jpg');
         ?>
         <img id="preview-foto" src="<?= $fotoAtual; ?>" alt="Preview da Foto"
-            style="max-height: 150px; max-width: 150px; background-color: var(--surface-0); border-radius: 100%;" />
+            style="aspect-ratio: 1 / 1; width: 100px; background-color: var(--surface-0); border-radius: 50%;" />
         <label for="PrestadorFoto" class="input-file-photo">
             <span
                 style="color: var(--text-secondary); font-size: 30px; margin-bottom: var(--spacing-sm); border: solid 10px var(--bg-body); border-radius: 100%;"
