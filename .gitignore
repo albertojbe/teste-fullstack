@@ -1,0 +1,90 @@
+# ==============================
+# CakePHP 2 – Diretórios temporários
+# ==============================
+app/tmp/*
+!app/tmp/.gitkeep
+!app/tmp/cache/
+!app/tmp/cache/models/
+!app/tmp/cache/persistent/
+!app/tmp/cache/views/
+!app/tmp/cache/empty
+
+app/tmp/cache/*/*
+app/tmp/cache/models/*
+app/tmp/cache/persistent/*
+app/tmp/cache/views/*
+
+# Logs
+app/tmp/logs/*
+!app/tmp/logs/.gitkeep
+
+# Sessions
+app/tmp/sessions/*
+!app/tmp/sessions/.gitkeep
+
+# # ==============================
+# # Arquivos de configuração sensíveis
+# # ==============================
+# app/Config/database.php
+# app/Config/core.php
+# app/Config/email.php
+# app/Config/bootstrap.php
+
+# ==============================
+# IDE / Editor files
+# ==============================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ==============================
+# Sistema operacional
+# ==============================
+.DS_Store
+Thumbs.db
+
+# ==============================
+# Arquivos de build / dependências externas
+# ==============================
+Vendor/
+vendor/
+app/Vendor/
+app/vendor/
+node_modules/
+bower_components/
+
+# Composer (caso use para outros pacotes)
+composer.lock
+composer.phar
+
+# ==============================
+# Docker
+# ==============================
+/docker/data/*
+/docker/mysql/*
+/docker/logs/*
+.env
+
+# ==============================
+# Logs gerais
+# ==============================
+*.log
+*.cache
+*.pid
+
+# ==============================
+# Arquivos temporários gerais
+# ==============================
+*.bak
+*.tmp
+*.swp
+*.swo
+*.orig
+
+# ==============================
+# Uploads (se houver)
+# ==============================
+app/webroot/files/*
+app/webroot/img/*
+!app/webroot/files/.gitkeep

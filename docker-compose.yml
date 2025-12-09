@@ -1,0 +1,26 @@
+services:
+  php:
+    container_name: desafio-doity
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/
+    command: >
+      bash -c " chown -R www-data:www-data /var/www/app/webroot/img &&
+      mkdir -p /var/www/app/tmp &&
+      chown -R www-data:www-data /var/www/app/tmp &&
+      chmod -R 775 /var/www/app/tmp && apache2-foreground "
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: desafio-doity
+      MYSQL_USER: doity
+      MYSQL_PASSWORD: doity
+      MYSQL_ROOT_PASSWORD: doity
+    ports:
+      - "3306:3306"
+    volumes:
+      - doity_db:/var/lib/mysql
+volumes:
+  doity_db:
