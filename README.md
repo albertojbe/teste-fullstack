@@ -46,6 +46,9 @@ Esse sistema tem como objetivo oferecer de forma simples o gerenciamento de pres
 - Git
 - Docker e Docker Compose
 
+[Vídeo Demonstrativo](https://www.youtube.com/watch?v=cn9zfnLx0ac)
+
+
 ### Processo
 
 **1. Clone o repositório**
@@ -65,6 +68,7 @@ docker container exec -it desafio-doity ./vendor/bin/phinx migrate -e developmen
 ```
 
 > Acesse em `localhost:8080`.
+
 
 ### Configurações
 O sistema permite personalizações através de arquivos de configuração. Abaixo estão as principais alterações possíveis:
