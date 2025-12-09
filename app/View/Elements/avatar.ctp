@@ -59,6 +59,7 @@ $config = $tamanhos[$tamanho] ?? $tamanhos['md'];
             display: flex;
             align-items: center;
             justify-content: center;
+            font-weight: normal;
         ">
             <?= $iniciais; ?>
         </div>

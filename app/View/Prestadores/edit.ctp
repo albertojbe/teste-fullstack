@@ -1,4 +1,4 @@
-<title>Editar Prestador</title>
+<?php $this->assign('title',"Editar Prestador"); ?>
 <header>
     <h2>Editar Prestador de Serviço</h2>
 </header>

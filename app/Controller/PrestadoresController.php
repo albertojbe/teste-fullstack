@@ -13,7 +13,7 @@ class PrestadoresController extends AppController
     public function index()
     {
         $this->paginate = [
-            'limit' => 5,
+            'limit' => 6,
             'order' => ['Prestador.id' => 'DESC'],
             'contain' => ['Servico']
         ];

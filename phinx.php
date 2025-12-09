@@ -12,7 +12,7 @@ return
 
         'development' => [
             'adapter' => 'mysql',
-            'host' => '127.0.0.1',
+            'host' => 'db',
             'name' => 'desafio-doity',
             'user' => 'doity',
             'pass' => 'doity',

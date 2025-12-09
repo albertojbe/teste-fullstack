@@ -41,16 +41,12 @@
             <tr>
                 <td>
                     <div class="media">
-                        <?php if (!empty($p['Prestador']['foto'])): ?>
-                            <?= $this->element(
-                                'avatar',
-                                ['foto' => h($p['Prestador']['foto']), 'nome' => h($p['Prestador']['nome']), 'sobrenome' => h($p['Prestador']['sobrenome'])]
-                            ); ?>
-                        <?php else: ?>
-                            <span class="avatar avatar-placeholder">?</span>
-                        <?php endif; ?>
+                        <?= $this->element(
+                            'avatar',
+                            ['foto' => h($p['Prestador']['foto']), 'nome' => h($p['Prestador']['nome']), 'sobrenome' => h($p['Prestador']['sobrenome'])]
+                        ); ?>
                         <div class="media-body">
-                            <strong><?= h($p['Prestador']['nome']); ?></strong>
+                            <strong><?= h($p['Prestador']['nome'] . " " . $p['Prestador']['sobrenome']); ?></strong>
                             <div class="weight-sm"><?= h($p['Prestador']['email']); ?></div>
                         </div>
                     </div>
@@ -61,7 +57,7 @@
                     <?php
                     if (!empty($p['Servico'])) {
                         $nomes = Hash::extract($p['Servico'], '{n}.nome');
-                        echo implode(', ', $nomes);
+                        echo (implode(', ', $nomes));
                     } else {
                         echo "<i>Nenhum</i>";
                     }

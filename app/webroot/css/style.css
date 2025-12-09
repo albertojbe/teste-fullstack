@@ -466,6 +466,20 @@ textarea {
    MENSAGENS FLASH
 ======================================== */
 
+
+/* Crescer do zero quando a pagina carregar */
+@keyframes aparecerMensagem {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
 .success-message {
     padding: var(--spacing-sm);
     margin-bottom: var(--spacing-sm);
@@ -474,7 +488,9 @@ textarea {
     background-color: var(--success-bg);
     border: 1px solid var(--success-border);
     color: #065f46;
+    animation: aparecerMensagem 0.3s ease forwards;
 }
+
 
 .error-message {
     padding: var(--spacing-sm);
@@ -484,6 +500,7 @@ textarea {
     background-color: var(--danger-bg);
     border: 1px solid var(--danger-border);
     color: #991b1b;
+    animation: aparecerMensagem 0.5s ease forwards;
 }
 
 .warning-message {
@@ -494,6 +511,7 @@ textarea {
     background-color: var(--warning-bg);
     border: 1px solid var(--warning-border);
     color: #92400e;
+    animation: aparecerMensagem 0.5s ease forwards;
 }
 
 .info-message {
@@ -504,6 +522,7 @@ textarea {
     background-color: var(--info-bg);
     border: 1px solid var(--info-border);
     color: #1e40af;
+    animation: aparecerMensagem 0.5s ease forwards;
 }
 
 /* ========================================
